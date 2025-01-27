@@ -64,6 +64,10 @@ int dqlite__init(struct dqlite_node *d,
 	d->lock_fd = -1;
 	memset(d->errmsg, 0, sizeof d->errmsg);
 
+	int* p = NULL;
+	printf(">>> Intentional null pointer dereference.\n\n");
+	*p = 10;
+
 	rv = snprintf(db_dir_path, sizeof db_dir_path, DATABASE_DIR_FMT, dir);
 	if (rv == -1 || rv >= (int)(sizeof db_dir_path)) {
 		snprintf(d->errmsg, DQLITE_ERRMSG_BUF_SIZE,
